@@ -1,11 +1,7 @@
-import { Text, View } from "react-native";
+import { View, Text } from "react-native";
+import React from "react";
+import { Redirect } from "expo-router";
 
 export default function Index() {
-	return (
-		<View className="flex-1 items-center justify-center">
-			<Text className="text-xl font-bold text-blue-500">
-				Edit app/index.tsx to edit this screen.
-			</Text>
-		</View>
-	);
+	return <Redirect href="/(tabs)" />;
 }

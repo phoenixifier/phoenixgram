@@ -1,11 +1,10 @@
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen } from "expo-router";
 import "./global.css";
 import React from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ClerkProvider } from "@clerk/clerk-expo";
-import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { useFonts } from "expo-font";
 import InitialLayout from "@/components/InitialLayout";
+import AuthProvider from "@/providers/AuthProvider";
 
 export default function RootLayout() {
 	const [fontsLoaded, error] = useFonts({
@@ -23,12 +22,12 @@ export default function RootLayout() {
 	}, [fontsLoaded, error]);
 
 	return (
-		<ClerkProvider tokenCache={tokenCache}>
+		<AuthProvider>
 			<SafeAreaProvider>
 				<SafeAreaView className="flex-1 bg-black">
 					<InitialLayout />
 				</SafeAreaView>
 			</SafeAreaProvider>
-		</ClerkProvider>
+		</AuthProvider>
 	);
 }

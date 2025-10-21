@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03032941-4dc1-4b98-a366-b51f96dd19c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Cinzel-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/flying-phoenix.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/flying-phoenix1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/InitialLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/convex/auth.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/convex/schema.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/providers/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/auth.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/styles/auth.style.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +94,7 @@
       <workItem from="1761037810695" duration="7921000" />
       <workItem from="1761048539133" duration="43000" />
       <workItem from="1761048586794" duration="99000" />
-      <workItem from="1761048690839" duration="905000" />
+      <workItem from="1761048690839" duration="5247000" />
     </task>
     <servers />
   </component>

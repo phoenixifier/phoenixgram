@@ -31,8 +31,8 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 40,
 	},
 	illustration: {
-		width: width * 0.75,
-		height: width * 0.75,
+		width: width * 0.7,
+		height: width * 0.7,
 		maxHeight: 280,
 	},
 	loginSection: {

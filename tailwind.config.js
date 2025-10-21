@@ -8,6 +8,14 @@ module.exports = {
 			colors: {
 				primary: "#FF4433",
 			},
+			fontFamily: {
+				cinzel: ["Cinzel-Regular", "sans-serif"],
+				"cinzel-medium": ["Cinzel-Medium", "sans-serif"],
+				"cinzel-semibold": ["Cinzel-SemiBold", "sans-serif"],
+				"cinzel-bold": ["Cinzel-Bold", "sans-serif"],
+				"cinzel-extrabold": ["Cinzel-ExtraBold", "sans-serif"],
+				"cinzel-black": ["Cinzel-Black", "sans-serif"],
+			},
 		},
 	},
 	plugins: [],

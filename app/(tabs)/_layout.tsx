@@ -3,6 +3,8 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/theme";
+import { SvgXml } from "react-native-svg";
+import { user } from "@/assets/vectors";
 
 export default function TabLayout() {
 	return (
@@ -13,11 +15,13 @@ export default function TabLayout() {
 				tabBarActiveTintColor: COLORS.primary,
 				tabBarInactiveTintColor: COLORS.grey,
 				tabBarStyle: {
-					backgroundColor: "black",
-					borderTopWidth: 0,
+					backgroundColor: "",
+					borderTopWidth: 0.5,
+					borderColor: COLORS.surface,
 					position: "absolute",
 					elevation: 0,
-					height: 40,
+					height: 45,
+					paddingTop: 4,
 					paddingBottom: 8,
 				},
 			}}
@@ -34,7 +38,7 @@ export default function TabLayout() {
 				name="bookmarks"
 				options={{
 					tabBarIcon: ({ size, color }) => (
-						<Ionicons name="bookmark" size={size} color={color} />
+						<Ionicons name="search" size={size} color={color} />
 					),
 				}}
 			/>

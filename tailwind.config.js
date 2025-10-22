@@ -7,6 +7,9 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "#FF4433",
+				surface: "#1A1A1A",
+				surfaceLight: "#2A2A2A",
+				grey: "#9CA3AF",
 			},
 			fontFamily: {
 				cinzel: ["Cinzel-Regular", "sans-serif"],

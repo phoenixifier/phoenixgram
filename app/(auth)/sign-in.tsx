@@ -28,7 +28,7 @@ export default function SignIn() {
 	return (
 		<View className="flex-1 justify-center items-center bg-black">
 			<View className="items-center" style={styles.brandSection}>
-				<View className="w-[60px] h-[60px] bg-primary/15 rounded-2xl items-center justify-center mb-5">
+				<View className="w-[60px] h-[60px] bg-primary/20 rounded-2xl items-center justify-center mb-5">
 					<Image
 						source={require("../../assets/images/phoenix-logo.png")}
 						className="w-10 h-12"
@@ -37,7 +37,7 @@ export default function SignIn() {
 				<Text className="text-2xl mb-2 text-primary font-cinzel-extrabold">
 					Phoenixgram
 				</Text>
-				<Text style={styles.tagline}>Don't miss anything</Text>
+				<Text className="text-grey ">A cross-platform social media app</Text>
 
 				<View className="flex-1 justify-center items-center px-10">
 					<Image

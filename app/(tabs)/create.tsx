@@ -17,6 +17,9 @@ import * as ImagePicker from "expo-image-picker";
 import ScrollView = Animated.ScrollView;
 import { styles } from "@/styles/create.styles";
 import { Image } from "expo-image";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { FileSystemUploadType, uploadAsync } from "expo-file-system/legacy";
 
 export default function CreateScreen() {
 	const router = useRouter();
@@ -27,7 +30,7 @@ export default function CreateScreen() {
 
 	const pickImage = async () => {
 		const result = await ImagePicker.launchImageLibraryAsync({
-			mediaTypes: ["images", "videos"],
+			mediaTypes: "images",
 			allowsEditing: true,
 			aspect: [1, 1],
 			quality: 1,
@@ -36,7 +39,33 @@ export default function CreateScreen() {
 		if (!result.canceled) setSelectedImage(result.assets[0].uri);
 	};
 
-	const handleShare = () => {};
+	const generateUploadUrl = useMutation(api.posts.generateUploadUrl);
+	const createPost = useMutation(api.posts.createPost);
+
+	const handleShare = async () => {
+		if (!selectedImage) return;
+		try {
+			setIsSharing(true);
+			const uploadUrl = await generateUploadUrl();
+			const uploadResult = await uploadAsync(uploadUrl, selectedImage, {
+				httpMethod: "POST",
+				uploadType: FileSystemUploadType.BINARY_CONTENT,
+				mimeType: "image/jpeg",
+			});
+
+			if (uploadResult.status !== 200) throw new Error("Upload failed!");
+
+			const { storageId } = JSON.parse(uploadResult.body);
+			console.log("Storage: ", storageId);
+			await createPost({ storageId, caption });
+
+			router.push("/(tabs)");
+		} catch (error) {
+			console.log("Error occurred while sharing", error);
+		} finally {
+			setIsSharing(false);
+		}
+	};
 
 	if (!selectedImage) {
 		return (

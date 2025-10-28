@@ -1,35 +1,23 @@
-import { Request, Response, NextFunction } from "express";
-import { Post, posts } from "../models/post";
+import { NextFunction, Request, Response } from "express";
+import PostService from "../services/post.service";
 
-export const createPost = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-): Promise<void> => {
-	try {
-		const { user_id, media, caption, likes_count, comments_count } = req.body;
-		const newPost: Post = {
-			user_id,
-			media,
-			caption,
-			likes_count,
-			comments_count,
-		};
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-};
+class PostController {
+	private postService = new PostService();
 
-export const getPosts = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-): Promise<void> => {
-	try {
-		res.json(posts);
-	} catch (error) {
-		console.log(error);
-		next(error);
-	}
-};
+	public getPosts = async (
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> => {
+		try {
+			const posts = await this.postService.getAll();
+			res.status(200).json({ success: true, data: posts });
+		} catch (error) {
+			console.error(error, "Error while getting posts");
+			res.status(500).json({ error: "Failed to get posts" });
+			next(error);
+		}
+	};
+}
+
+export default PostController;

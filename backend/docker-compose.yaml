@@ -1,0 +1,31 @@
+
+
+services:
+  db:
+    image: postgres:16 # You can specify a different PostgreSQL version
+    restart: always
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME} # Replace with your desired database name
+      POSTGRES_USER: ${DATABASE_USER} # Replace with your desired username
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD} # Replace with your desired password
+    ports:
+      - "5433:5432"
+    networks:
+      - pg-network
+
+  pgadmin:
+    image: dpage/pgadmin4 # Use the official pgAdmin 4 image
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${ADMIN_EMAIL} # Replace with your desired email
+      PGADMIN_DEFAULT_PASSWORD: ${ADMIN_PASSWORD} # Replace with your desired password
+    ports:
+      - "5050:80" # Expose pgAdmin on port 5050
+    depends_on:
+      - db # Ensure PostgreSQL starts before pgAdmin
+    networks:
+      - pg-network
+
+networks:
+  pg-network:
+    driver: bridge

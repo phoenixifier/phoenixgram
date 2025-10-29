@@ -1,11 +1,35 @@
-import { Post } from "../models/post.model.ts";
 import db from "../database/db.ts";
+import { Post } from "../models/post.model.ts";
+import UserRepository from "./user.repository.ts";
 
 class PostRepository {
-	private entity = "posts";
+	private postEntity = "posts";
+	private userRepository: UserRepository = new UserRepository();
 
 	async findAll(): Promise<Post[]> {
-		return db<Post>(this.entity).select("*");
+		return db<Post>(this.postEntity).select("*");
+	}
+
+	async findById(post_id: number): Promise<Post | undefined> {
+		return db<Post>(this.postEntity).where("id", post_id).first();
+	}
+
+	async create(post: Partial<Post>): Promise<Post | undefined> {
+		return await db.transaction(async (trx) => {
+			const [createdPost] = await trx<Post>(this.postEntity)
+				.insert(post)
+				.returning("*");
+
+			if (post.user_id) {
+				await this.userRepository.incrementPostCount(post.user_id);
+			}
+
+			return createdPost;
+		});
+	}
+
+	async delete(post_id: number): Promise<Post> {
+		return db<Post>(this.postEntity).where("id", post_id).del();
 	}
 }
 

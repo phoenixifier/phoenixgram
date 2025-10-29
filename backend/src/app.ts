@@ -1,11 +1,11 @@
-import express from "express";
+import express, { Express } from "express";
 import { errorMiddleware } from "./middlewares/error.middleware";
 import config from "./config/config";
 import cors from "cors";
 import postRouter from "./routes/post.route";
 import userRouter from "./routes/user.route.ts";
 
-const app = express();
+const app: Express = express();
 
 app.use(express.json());
 app.use(cors());

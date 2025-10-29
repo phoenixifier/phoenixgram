@@ -3,7 +3,7 @@ import { Pool } from "pg";
 const pool = new Pool({
 	user: process.env.DATABASE_USER,
 	host: process.env.DATABASE_HOST,
-	port: Number(process.env.PORT),
+	port: Number(process.env.DATABASE_PORT),
 	password: process.env.DATABASE_PASSWORD,
 	database: process.env.DATABASE_NAME,
 });

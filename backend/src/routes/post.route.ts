@@ -2,7 +2,7 @@ import { Router } from "express";
 import PostController from "../controllers/post.controller";
 
 const postRouter = Router();
-const postController = new PostController();
+const postController: PostController = new PostController();
 
 postRouter.get("/", postController.getPosts);
 

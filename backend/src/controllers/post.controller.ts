@@ -1,19 +1,18 @@
 import { NextFunction, Request, Response } from "express";
-import PostService from "../services/post.service";
+import PostRepository from "../repositories/post.repository.ts";
 
 class PostController {
-	private postService = new PostService();
-
+	private postRepository: PostRepository = new PostRepository();
 	public getPosts = async (
 		req: Request,
 		res: Response,
 		next: NextFunction,
 	): Promise<void> => {
 		try {
-			const posts = await this.postService.getAll();
+			const posts = await this.postRepository.findAll();
 			res.status(200).json({ success: true, data: posts });
 		} catch (error) {
-			console.error(error, "Error while getting posts");
+			console.error("Error while getting posts", error);
 			res.status(500).json({ error: "Failed to get posts" });
 			next(error);
 		}

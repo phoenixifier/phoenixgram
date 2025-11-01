@@ -57,6 +57,23 @@ class PostController {
 		}
 	};
 
+	public updatePost = async (
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> => {
+		const { id } = req.params;
+		const post = req.body;
+		try {
+			await this.postRepository.update(post, Number(id));
+			res.status(200).json({ success: true, data: post });
+		} catch (error) {
+			console.error("Error while updating the post", error);
+			res.status(500).json({ error: "Failed to update the post" });
+			next(error);
+		}
+	};
+
 	public deletePost = async (
 		req: Request,
 		res: Response,

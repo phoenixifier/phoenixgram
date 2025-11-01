@@ -28,6 +28,12 @@ class PostRepository {
 		});
 	}
 
+	async update(post: Post, post_id: number): Promise<Post | undefined> {
+		return db<Post>(this.postEntity).where("id", post_id).update({
+			caption: post.caption,
+		});
+	}
+
 	async delete(post_id: number): Promise<Post> {
 		return db<Post>(this.postEntity).where("id", post_id).del();
 	}

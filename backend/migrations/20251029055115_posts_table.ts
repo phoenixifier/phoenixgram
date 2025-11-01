@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
 		if (!exists) {
 			return knex.schema.createTable("posts", (table) => {
 				table.increments("id").primary().unsigned();
-				table.integer("user_id").unsigned();
+				table.integer("user_id").notNullable().unsigned();
 				table
 					.foreign("user_id")
 					.references("id")
@@ -15,7 +15,7 @@ export async function up(knex: Knex): Promise<void> {
 				table.text("media").notNullable();
 				table.string("caption", 100).notNullable();
 				table.integer("likes_count").unsigned().defaultTo(0);
-				table.integer("comments_count").notNullable().unsigned().defaultTo(0);
+				table.integer("comments_count").unsigned().defaultTo(0);
 				table.timestamp("created_at").defaultTo(knex.fn.now());
 				table.timestamp("updated_at").defaultTo(knex.fn.now());
 			});

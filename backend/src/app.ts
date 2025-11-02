@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import { errorMiddleware } from "./middlewares/error.middleware";
 import config from "./config/config";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import postRouter from "./routes/post.route";
 import userRouter from "./routes/user.route.ts";
@@ -10,6 +11,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 app.use(errorMiddleware);
+app.use(cookieParser());
 
 app.use("/posts", postRouter);
 app.use("/users", userRouter);

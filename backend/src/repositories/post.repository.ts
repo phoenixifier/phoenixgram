@@ -20,10 +20,6 @@ class PostRepository {
 				.insert(post)
 				.returning("*");
 
-			if (post.user_id) {
-				await this.userRepository.incrementPostCount(post.user_id);
-			}
-
 			return createdPost;
 		});
 	}

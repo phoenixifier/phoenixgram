@@ -8,8 +8,15 @@ class UserRepository {
 		return db<User>(this.userEntity).select("*");
 	}
 
-	async findById(user_id: number): Promise<User | undefined> {
-		return db<User>(this.userEntity).where("id", user_id).first();
+	async findById(user_id: number): Promise<any> {
+		return db<User>(this.userEntity)
+			.select("users.*")
+			.count("posts.id AS post_count")
+			.from("users")
+			.leftOuterJoin("posts", "users.id", "posts.user_id")
+			.where("users.id", user_id)
+			.groupBy("users.id")
+			.first();
 	}
 
 	async create(user: Partial<User>): Promise<User> {
@@ -25,12 +32,6 @@ class UserRepository {
 			avatar: user.avatar,
 			bio: user.bio,
 		});
-	}
-
-	incrementPostCount(userId: number) {
-		return db<User>(this.userEntity)
-			.where("id", userId)
-			.increment("posts_count", 1);
 	}
 
 	async delete(user_id: number): Promise<User> {
